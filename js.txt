@@ -1,0 +1,140 @@
+/* ==========================================================================
+   LAWBUDDY CLIENT LOGIC CONTROLLER
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+    initNavigation();
+    initPaperFiltering();
+    initPremiumCheckout();
+});
+
+/**
+ * Responsive Mobile Menu Controller
+ */
+function initNavigation() {
+    const mobileMenuBtn = document.getElementById('mobile-menu');
+    const navMenu = document.querySelector('.nav-menu');
+    const navLinks = document.querySelectorAll('.nav-item');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+        mobileMenuBtn.classList.toggle('open');
+        // Simple animation trigger for standard hamburgers
+        const bars = mobileMenuBtn.querySelectorAll('.bar');
+        if(mobileMenuBtn.classList.contains('open')) {
+            bars[0].style.transform = 'rotate(-45deg) translate(-5px, 6px)';
+            bars[1].style.opacity = '0';
+            bars[2].style.transform = 'rotate(45deg) translate(-5px, -6px)';
+        } else {
+            bars[0].style.transform = 'none';
+            bars[1].style.opacity = '1';
+            bars[2].style.transform = 'none';
+        }
+    });
+
+    // Close menu when navigation path items are clicked
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+            mobileMenuBtn.classList.remove('open');
+            navLinks.forEach(nav => nav.classList.remove('active'));
+            link.classList.add('active');
+        });
+    });
+}
+
+/**
+ * Click-To-Scroll Semester Card Hook
+ */
+function filterSemester(semNumber) {
+    alert(`Routing you to specific curated folder materials for Mumbai University Semester ${semNumber}.`);
+    const notesSection = document.getElementById('notes');
+    if (notesSection) {
+        notesSection.scrollIntoView({ behavior: 'smooth' });
+    }
+}
+
+/**
+ * Previous Year Question Papers UI Segment Filter Logic
+ */
+function filterPapers(semesterGroup) {
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const paperCards = document.querySelectorAll('.paper-card');
+
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+
+    paperCards.forEach(card => {
+        if (semesterGroup === 'all' || card.getAttribute('data-sem') === semesterGroup) {
+            card.style.display = 'block';
+            card.style.animation = 'fadeIn 0.4s ease-out forwards';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+}
+
+/**
+ * Document Secure PDF Preview Overlay Controllers
+ */
+function openPdfPreview(documentTitle) {
+    const modal = document.getElementById('previewModal');
+    const modalTitle = document.getElementById('modalTitle');
+    
+    modalTitle.innerText = `Previewing: ${documentTitle.replace(/_/g, ' ')}`;
+    modal.style.display = 'flex';
+}
+
+function closePdfPreview() {
+    const modal = document.getElementById('previewModal');
+    modal.style.display = 'none';
+}
+
+// Global window close listener for modern UX exit patterns
+window.onclick = function(event) {
+    const modal = document.getElementById('previewModal');
+    if (event.target == modal) {
+        modal.style.display = 'none';
+    }
+}
+
+/**
+ * Razorpay Payment Sandbox Checkout Architecture
+ */
+function initPremiumCheckout() {
+    const checkoutButton = document.getElementById('rzp-button');
+    
+    if(!checkoutButton) return;
+
+    checkoutButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // This is a secure configuration placeholder ready for production environment variables
+        const options = {
+            "key": "rzp_test_YOUR_KEY_HERE", // Replace with real merchant API key from Razorpay dashboard
+            "amount": "149900", // Amount in paise (149900 = INR 1499)
+            "currency": "INR",
+            "name": "LawBuddy Premium",
+            "description": "Ultimate Judiciary & MU Exam Cracker Pass",
+            "image": "https://img.icons8.com/color/100/justice.png", 
+            "handler": function (response){
+                alert(`Payment Successful!\nPayment ID: ${response.razorpay_payment_id}\nYour Access is unlocking now.`);
+            },
+            "prefill": {
+                "name": "Mumbai University Student",
+                "email": "student@mu.edu.in"
+            },
+            "theme": {
+                "color": "#D4AF37" // Coordinates Razorpay portal branding color to match global Gold accent
+            }
+        };
+        
+        try {
+            const rzp = new Razorpay(options);
+            rzp.open();
+        } catch (error) {
+            console.error("Razorpay SDK initialization failed.", error);
+            alert("Razorpay integration configuration is pending initialization. Replace placeholder key tags with real merchant identifiers to run live transactions.");
+        }
+    });
+}
