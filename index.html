@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawBuddy – Your Legal Study Partner | Mumbai University</title>
+    <meta name="description" content="Premium legal study platform for Mumbai University law students. Access LLB notes, past question papers, bare acts, and case laws.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Law<span class="gold-text">Buddy</span></a>
+            <button class="menu-toggle" id="mobile-menu" aria-label="Toggle Menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <nav class="nav-menu">
+                <a href="#" class="nav-item active">Home</a>
+                <a href="#notes" class="nav-item">LLB Notes</a>
+                <a href="#papers" class="nav-item">Question Papers</a>
+                <a href="#bare-acts" class="nav-item">Bare Acts</a>
+                <a href="#case-laws" class="nav-item">Case Law</a>
+                <a href="#judiciary" class="nav-item">Judiciary</a>
+                <a href="#contact" class="nav-item">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-layout container">
+        
+        <main class="content-area">
+            
+            <section class="hero animate-fade">
+                <h1>LawBuddy – Your Legal Study Partner</h1>
+                <p>Tailored Resources for Mumbai University 3-Year & 5-Year LLB Programs. Clear exams with premium notes, past papers, and bare act simplified decoders.</p>
+                <div class="hero-ctas">
+                    <a href="#notes" class="btn btn-primary">Explore Free Notes</a>
+                    <a href="#premium" class="btn btn-secondary"><i class="fa-solid fa-crown"></i> Go Premium</a>
+                </div>
+            </section>
+
+            <section class="university-banner">
+                <div class="uni-badge"><i class="fa-solid fa-graduation-cap"></i> Mumbai University Curriculum</div>
+                <p>Updated for the latest choice-based grading system syllabus.</p>
+            </section>
+
+            <section class="section-spacing" id="semesters">
+                <h2 class="section-title">Browse by Semester</h2>
+                <div class="grid grid-3">
+                    <div class="card sem-card" onclick="filterSemester(1)">
+                        <h3>Semester 1</h3>
+                        <p>Labour Laws, Contract I, Torts & Consumer Protection</p>
+                        <span class="explore-link">View Materials <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card sem-card" onclick="filterSemester(2)">
+                        <h3>Semester 2</h3>
+                        <p>Law of Crimes, Constitutional Law, Property Law</p>
+                        <span class="explore-link">View Materials <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card sem-card" onclick="filterSemester(3)">
+                        <h3>Semester 3</h3>
+                        <p>Administrative Law, Family Law I, Company Law</p>
+                        <span class="explore-link">View Materials <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card sem-card" onclick="filterSemester(4)">
+                        <h3>Semester 4</h3>
+                        <p>Jurisprudence, Family Law II, Land Laws</p>
+                        <span class="explore-link">View Materials <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card sem-card" onclick="filterSemester(5)">
+                        <h3>Semester 5</h3>
+                        <p>Civil Procedure Code (CPC), Criminal Procedure Code (CrPC)</p>
+                        <span class="explore-link">View Materials <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                    <div class="card sem-card" onclick="filterSemester(6)">
+                        <h3>Semester 6</h3>
+                        <p>Law of Evidence, Environmental Law, Taxation</p>
+                        <span class="explore-link">View Materials <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-spacing" id="notes">
+                <div class="section-header">
+                    <h2 class="section-title">Featured LLB Notes</h2>
+                    <span class="badge">Free Access</span>
+                </div>
+                <div class="grid grid-2">
+                    <div class="card item-card">
+                        <span class="card-tag">Sem 1 | Contract Law</span>
+                        <h3>General Principles of Contract (Sec 1-75)</h3>
+                        <p>Comprehensive analytical breakdowns of Offer, Acceptance, and Consideration with landmark cases.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline" onclick="openPdfPreview('Contract_Notes_Preview')"><i class="fa-solid fa-eye"></i> Preview</button>
+                            <a href="#" class="btn btn-sm btn-primary" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                        </div>
+                    </div>
+                    <div class="card item-card">
+                        <span class="card-tag">Sem 2 | Constitutional Law</span>
+                        <h3>Fundamental Rights & Judicial Review</h3>
+                        <p>Deep-dive study notes parsing Article 14, 19, and 21 with Kesavananda Bharati application frameworks.</p>
+                        <div class="card-actions">
+                            <button class="btn btn-sm btn-outline" onclick="openPdfPreview('Constitutional_Law_Preview')"><i class="fa-solid fa-eye"></i> Preview</button>
+                            <a href="#" class="btn btn-sm btn-primary" download><i class="fa-solid fa-download"></i> Download PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-spacing" id="papers">
+                <h2 class="section-title">MU Previous Year Question Papers</h2>
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterPapers('all')">All Papers</button>
+                    <button class="filter-btn" onclick="filterPapers('sem1')">Sem 1</button>
+                    <button class="filter-btn" onclick="filterPapers('sem2')">Sem 2</button>
+                </div>
+                <div class="grid grid-3">
+                    <div class="card paper-card" data-sem="sem1">
+                        <div class="paper-icon"><i class="fa-regular fa-file-pdf"></i></div>
+                        <h4>Law of Torts (Nov 2024)</h4>
+                        <p>Mumbai University Official Paper</p>
+                        <a href="#" class="btn btn-sm btn-block btn-secondary" download><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                    <div class="card paper-card" data-sem="sem2">
+                        <div class="paper-icon"><i class="fa-regular fa-file-pdf"></i></div>
+                        <h4>Constitutional Law I (May 2024)</h4>
+                        <p>Mumbai University Official Paper</p>
+                        <a href="#" class="btn btn-sm btn-block btn-secondary" download><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                    <div class="card paper-card" data-sem="sem1">
+                        <div class="paper-icon"><i class="fa-regular fa-file-pdf"></i></div>
+                        <h4>Law of Contracts I (Nov 2023)</h4>
+                        <p>Mumbai University Official Paper</p>
+                        <a href="#" class="btn btn-sm btn-block btn-secondary" download><i class="fa-solid fa-download"></i> Download</a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-spacing premium-vault" id="premium">
+                <div class="premium-badge"><i class="fa-solid fa-crown"></i> PREMIUM VAULT</div>
+                <h2>Ultimate Judiciary & MU Exam Cracker Series</h2>
+                <p>Unlock comprehensive subject modules engineered by top corporate lawyers and rankers. Includes predictable test questions, model exam blueprints, and concise bullet sheets.</p>
+                <div class="premium-pricing-box">
+                    <h3>All-Inclusive Premium Pass</h3>
+                    <div class="price">₹1,499 <span class="original-price">₹4,999</span></div>
+                    <p class="price-detail">One-time payment. Lifetime updates access.</p>
+                    <button class="btn btn-gold btn-large btn-block" id="rzp-button"><i class="fa-solid fa-bolt"></i> Unlock Premium Access</button>
+                </div>
+            </section>
+
+            <section class="section-spacing" id="bare-acts">
+                <h2 class="section-title">Simplified Bare Acts</h2>
+                <div class="grid grid-3">
+                    <div class="card status-card">
+                        <h4>BNS, 2023</h4>
+                        <p>Bharatiya Nyaya Sanhita tracking system mapped side-by-side with old IPC metrics.</p>
+                    </div>
+                    <div class="card status-card">
+                        <h4>BNSS, 2023</h4>
+                        <p>Bharatiya Nagarik Suraksha Sanhita system architecture revisions configured seamlessly.</p>
+                    </div>
+                    <div class="card status-card">
+                        <h4>BSA, 2023</h4>
+                        <p>Bharatiya Sakshya Adhiniyam cross-indexed with Indian Evidence Act provisions.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-spacing" id="case-laws">
+                <h2 class="section-title">Critical Case Law Trackers</h2>
+                <div class="card case-card">
+                    <h4>Supreme Court Verdicts (2025-2026 Compilation)</h4>
+                    <p>Briefings detailing operational expansions across constitutional structures.</p>
+                </div>
+            </section>
+
+            <section class="section-spacing" id="judiciary">
+                <h2 class="section-title">Judiciary Preparation Track</h2>
+                <div class="card prep-card">
+                    <h4>Maharashtra Judicial Services (JMFC) Module</h4>
+                    <p>Unlock foundational preliminary milestone trackers focused heavily on local law applications and state-specific formats.</p>
+                </div>
+            </section>
+
+        </main>
+
+        <aside class="sidebar">
+            <div class="sidebar-widget">
+                <h3>Global Resource Search</h3>
+                <div class="search-box">
+                    <input type="text" id="globalSearch" placeholder="Search notes, sections, papers...">
+                    <button aria-label="Search Button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Quick Categories</h3>
+                <ul class="widget-list">
+                    <li><a href="#notes">MU Semester Notes <span class="count">24</span></a></li>
+                    <li><a href="#papers">University Papers <span class="count">18</span></a></li>
+                    <li><a href="#bare-acts">New Criminal Laws <span class="count">3</span></a></li>
+                    <li><a href="#judiciary">JMFC Exam Core <span class="count">12</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>Recent Uploads</h3>
+                <ul class="widget-list mini-list">
+                    <li>
+                        <span class="date">Just Now</span>
+                        <a href="#">BNS Section 103: Murder Provisions Analyzed</a>
+                    </li>
+                    <li>
+                        <span class="date">Yesterday</span>
+                        <a href="#">MU LLB Sem 4 Jurisprudence Paper Added</a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget adsense-placeholder">
+                <span class="ad-tag">Advertisement</span>
+                <p>Google AdSense Managed Container</p>
+            </div>
+        </aside>
+
+    </div>
+
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePdfPreview()">&times;</span>
+            <h3 id="modalTitle">Document Preview</h3>
+            <div class="pdf-mock-viewport">
+                <p><i class="fa-solid fa-file-invoice fa-3x gold-text"></i></p>
+                <p>Rendering secure encrypted PDF Document stream inside client framework...</p>
+                <p class="dim-text">[In production, replace this box wrapper cleanly with an &lt;iframe&gt; or PDF.js viewer element]</p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer" id="contact">
+        <div class="container footer-grid">
+            <div class="footer-info">
+                <a href="#" class="logo">Law<span class="gold-text">Buddy</span></a>
+                <p>LawBuddy is a premier EdTech utility platform custom engineered for Mumbai University law students. We provide accurate, comprehensive insights to help build systemic precision across academia.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Reach Out</h4>
+                <p><i class="fa-solid fa-envelope gold-text"></i> support@lawbuddy.in</p>
+                <p><i class="fa-solid fa-location-dot gold-text"></i> Mumbai, Maharashtra, India</p>
+            </div>
+            <div class="footer-socials">
+                <h4>Join the Circle</h4>
+                <div class="social-icons">
+                    <a href="#" aria-label="LinkedIn Profile"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Telegram Channel"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" aria-label="YouTube Channel"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 LawBuddy Core Systems. Crafted for Excellence. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
